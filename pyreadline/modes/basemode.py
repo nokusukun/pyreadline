@@ -200,6 +200,10 @@ class BaseMode(object):
                     r = self.completer(ensure_unicode(text), i)
                 except IndexError:
                     break
+                except AttributeError:
+                    # This is a quick hotfix, completer throws an error whenever
+                    # it finds nothing.
+                    break
                 i += 1
                 if r is None:
                     break
